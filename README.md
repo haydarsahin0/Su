@@ -28,16 +28,22 @@ python3 -m http.server 8000
 
 ## GitHub Pages ile yayına alma
 
-İki yoldan biri yeterli:
+Depoda yayın iş akışı hazır (`.github/workflows/pages.yml`), ama **Pages'i ilk kez açmak
+depo ayarlarından yapılması gereken tek seferlik bir adım** — iş akışının kendi jetonu
+bunu yapmaya yetkili değil (`Resource not accessible by integration`).
 
-**A) Actions ile (depoda hazır)** — Depoda `Settings → Pages → Build and deployment → Source` altında
-**GitHub Actions**'ı seç. `.github/workflows/pages.yml` her push'ta siteyi yayına alır.
+**1. adım (bir kez, senin yapman gerekiyor):**
+`Settings → Pages → Build and deployment → Source` altında **GitHub Actions**'ı seç.
 
-**B) Doğrudan branch'ten** — `Settings → Pages → Source: Deploy from a branch`, branch olarak yayınlamak
-istediğin dalı ve `/ (root)` klasörünü seç.
+**2. adım:** `Actions → GitHub Pages` çalışmasını `Re-run jobs` ile tekrar başlat
+(veya yeni bir commit gönder). Bundan sonrası otomatik: her push'ta site yeniden yayınlanır.
 
-Yayına alındıktan sonra adres şöyle olur:
-`https://<kullanıcı-adın>.github.io/<depo-adı>/`
+Site adresi şöyle olur:
+`https://haydarsahin0.github.io/Su/`
+
+> Alternatif: Actions ile uğraşmak istemezsen `Settings → Pages → Source: Deploy from a branch`
+> seçip dalı ve `/ (root)` klasörünü de gösterebilirsin. Bu durumda `.github/workflows/pages.yml`
+> dosyasını silmen iyi olur, yoksa her push'ta kırmızı bir çalışma bırakır.
 
 ## Veriler nerede?
 
